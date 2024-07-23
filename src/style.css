@@ -1,0 +1,41 @@
+body,
+#root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(97, 97, 97, 1) 100%
+  );
+}
+
+.header {
+  position: fixed;
+  background: #f1f1f1;
+  width: 100%;
+  height: 40px;
+  z-index: 100;
+  padding:5px
+}
+
+.dbLogo{
+  width:120px
+}
+
+.monitor iframe {
+  width: 1060px;
+  height: 700px;
+  border: none;
+  border-radius: 20px;
+}
+
+.old-monitor iframe {
+  width: 1060px;
+  height: 700px;
+  border: none;
+}
+
+
