@@ -2,16 +2,33 @@ import { Canvas } from "@react-three/fiber";
 import { useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./Header";
+import Preloader from "./Preloader";
 import Scene from "./Scene";
 import "./style.css";
+import { useProgress } from "@react-three/drei";
 
 const initialPosition = [-15, 6, 20];
 const finalPosition = [-3, 2.5, 4];
 
 function App() {
+  const { progress } = useProgress();
   const [device, setDevice] = useState("notebook");
   const [cameraPosition, setCameraPosition] = useState(initialPosition);
   const [cameraPositionIndex, setCameraPositionIndex] = useState(0);
+  const websiteUrl = " https://www.sitishop.it";
+
+  /*
+ useEffect(() => {
+    // Monitorare il completamento del caricamento
+    if (nodes && materials) {
+      setLoading(false);
+    }
+  }, [nodes, materials]);
+
+
+  {loading && <Preloader />}
+
+*/
 
   return (
     <>
@@ -23,8 +40,10 @@ function App() {
         finalPosition={finalPosition}
         setCameraPositionIndex={setCameraPositionIndex}
       />
+      {progress < 100 && <Preloader />}
       <Canvas
         shadows
+        dpr={[1, 2]}
         camera={{
           fov: 45,
           near: 0.1,

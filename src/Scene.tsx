@@ -5,8 +5,14 @@ import {
 } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useEffect } from "react";
+import DbLogo from "./DbLogo";
+import Desktop from "./Desktop";
+import Monitor from "./Monitor.js";
 import MonitorOld from "./MonitorOld.js";
+import Mug from "./Mug";
 import Notebook from "./Notebook.js";
+import Smartphone from "./Smartphone.js";
+import Tablet from "./Tablet.js";
 
 const CameraController = ({ targetPosition }) => {
   const { camera } = useThree();
@@ -76,6 +82,23 @@ export default function Scene({
     };
   }, []);
 
+  const renderDevice = () => {
+    switch (device) {
+      case "notebook":
+        return <Notebook occlude={cameraPositionIndex} />;
+      case "monitor":
+        return <Monitor occlude={cameraPositionIndex} />;
+      case "monitorOld":
+        return <MonitorOld occlude={cameraPositionIndex} />;
+      case "tablet":
+        return <Tablet occlude={cameraPositionIndex} />;
+      case "smartphone":
+        return <Smartphone occlude={cameraPositionIndex} />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <>
       <PresentationControls
@@ -101,11 +124,15 @@ export default function Scene({
           color="black"
         />
         <CameraController targetPosition={cameraPosition} />
-        {device == "notebook" ? (
-          <Notebook occlude={cameraPositionIndex} />
-        ) : (
-          <MonitorOld occlude={cameraPositionIndex} />
+        {device != "smartphone" && device != "tablet" && (
+          <>
+            <Mug />
+            <DbLogo />
+            <Desktop />
+          </>
         )}
+
+        {renderDevice()}
       </PresentationControls>
     </>
   );

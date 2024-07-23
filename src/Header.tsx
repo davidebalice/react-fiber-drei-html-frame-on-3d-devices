@@ -28,12 +28,45 @@ export default function Header({
           <li>
             <a
               onClick={() => {
-                setDevice("monitor-old");
+                setDevice("monitor");
+                setCameraPosition(initialPosition);
+                setCameraPositionIndex(0);
+              }}
+            >
+              monitor
+            </a>
+          </li>
+          <li>
+            <a
+              onClick={() => {
+                setDevice("monitorOld");
                 setCameraPosition(initialPosition);
                 setCameraPositionIndex(0);
               }}
             >
               monitor-old
+            </a>
+          </li>
+          <li>
+            <a
+              onClick={() => {
+                setDevice("smartphone");
+                setCameraPosition(initialPosition);
+                setCameraPositionIndex(0);
+              }}
+            >
+              smartphone
+            </a>
+          </li>
+          <li>
+            <a
+              onClick={() => {
+                setDevice("tablet");
+                setCameraPosition(initialPosition);
+                setCameraPositionIndex(0);
+              }}
+            >
+              tablet
             </a>
           </li>
           <li>

@@ -1,33 +1,33 @@
 import { Html, useGLTF } from "@react-three/drei";
 import "./style.css";
 
-export default function MonitorOld({ occlude }) {
-  const monitor = useGLTF("./public/assets/model/monitor-old.gltf");
-  const pc = useGLTF("./public/assets/model/pc-old.gltf");
+export default function Monitor({ occlude }) {
+  const monitor = useGLTF("./public/assets/model/monitor.gltf");
+  const pc = useGLTF("./public/assets/model/pc.gltf");
 
   return (
     <>
       <primitive
         object={pc.scene}
-        position={[0.5, -4.95, 2]}
-        scale={[1.7, 1.7, 1.7]}
-        rotation={[0, -1.59, 0]}
+        position={[2.95, -5.1, -0.5]}
+        scale={[0.135, 0.135, 0.135]}
+        rotation={[0, 0, 0]}
         castShadow
       ></primitive>
       <primitive
         object={monitor.scene}
-        position-y={1.2}
-        position-z={-0.2}
+        position-y={-0.5}
+        position-z={-1}
         scale={[0.013, 0.013, 0.013]}
         rotation={[0, 4.66, 0]}
         castShadow
       >
         <Html
-          wrapperClass="monitor-old"
-          position={[15, 0, 0]}
-          scale={[27, 27, 27]}
+          wrapperClass="monitor"
+          position={[37, 151, 0]}
+          scale={[29, 29, 29]}
           transform
-          rotation-y={1.58}
+          rotation-y={1.595}
           rotation-x={0}
           rotation-z={0}
           distanceFactor={2}
