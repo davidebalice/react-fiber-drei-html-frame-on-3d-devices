@@ -1,9 +1,18 @@
-import { Html, useGLTF } from "@react-three/drei";
+import { Html, useGLTF, useProgress } from "@react-three/drei";
 
 import "./style.css";
+import { useEffect } from "react";
 
-export default function Notebook({ occlude }) {
+export default function Notebook({ occlude,websiteUrl,setLoading }) {
   const notebook = useGLTF("./public/assets/model/macbook.gltf");
+
+  const { progress } = useProgress();
+
+  useEffect(() => {
+    if (progress === 100) {
+      setLoading(false);
+    }
+  }, [progress]);
 
   return (
     <>
@@ -21,7 +30,7 @@ export default function Notebook({ occlude }) {
         distanceFactor={1.12}
         {...(occlude === 0 && { occlude: "blending" })}
       >
-        {<iframe src="https://www.sitishop.it" />}
+        {<iframe src={websiteUrl} />}
       </Html>
     </>
   );

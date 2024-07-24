@@ -34,6 +34,9 @@ export default function Scene({
   setCameraPosition,
   cameraPositionIndex,
   setCameraPositionIndex,
+  websiteUrl,
+  loading,
+  setLoading,
 }) {
   /*
   useEffect(() => {
@@ -82,18 +85,48 @@ export default function Scene({
     };
   }, []);
 
-  const renderDevice = () => {
+  const renderDevice = (websiteUrl) => {
     switch (device) {
       case "notebook":
-        return <Notebook occlude={cameraPositionIndex} />;
+        return (
+          <Notebook
+            occlude={cameraPositionIndex}
+            websiteUrl={websiteUrl}
+            setLoading={setLoading}
+          />
+        );
       case "monitor":
-        return <Monitor occlude={cameraPositionIndex} />;
+        return (
+          <Monitor
+            occlude={cameraPositionIndex}
+            websiteUrl={websiteUrl}
+            setLoading={setLoading}
+          />
+        );
       case "monitorOld":
-        return <MonitorOld occlude={cameraPositionIndex} />;
+        return (
+          <MonitorOld
+            occlude={cameraPositionIndex}
+            websiteUrl={websiteUrl}
+            setLoading={setLoading}
+          />
+        );
       case "tablet":
-        return <Tablet occlude={cameraPositionIndex} />;
+        return (
+          <Tablet
+            occlude={cameraPositionIndex}
+            websiteUrl={websiteUrl}
+            setLoading={setLoading}
+          />
+        );
       case "smartphone":
-        return <Smartphone occlude={cameraPositionIndex} />;
+        return (
+          <Smartphone
+            occlude={cameraPositionIndex}
+            websiteUrl={websiteUrl}
+            setLoading={setLoading}
+          />
+        );
       default:
         return null;
     }
@@ -132,7 +165,7 @@ export default function Scene({
           </>
         )}
 
-        {renderDevice()}
+        {renderDevice(websiteUrl)}
       </PresentationControls>
     </>
   );

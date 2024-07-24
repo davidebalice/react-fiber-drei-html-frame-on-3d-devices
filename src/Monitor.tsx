@@ -1,9 +1,18 @@
-import { Html, useGLTF } from "@react-three/drei";
+import { Html, useGLTF, useProgress } from "@react-three/drei";
 import "./style.css";
+import { useEffect } from "react";
 
-export default function Monitor({ occlude }) {
+export default function Monitor({ occlude,websiteUrl,setLoading }) {
   const monitor = useGLTF("./public/assets/model/monitor.gltf");
   const pc = useGLTF("./public/assets/model/pc.gltf");
+
+  const { progress } = useProgress();
+
+  useEffect(() => {
+    if (progress === 100) {
+      setLoading(false);
+    }
+  }, [progress]);
 
   return (
     <>
@@ -33,7 +42,7 @@ export default function Monitor({ occlude }) {
           distanceFactor={2}
           {...(occlude === 0 && { occlude: "blending" })}
         >
-          <iframe src="https://www.sitishop.it" />
+          <iframe src={websiteUrl} />
         </Html>
       </primitive>
     </>

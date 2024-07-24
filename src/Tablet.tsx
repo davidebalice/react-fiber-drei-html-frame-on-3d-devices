@@ -1,9 +1,18 @@
-import { Html, useGLTF } from "@react-three/drei";
+import { Html, useGLTF, useProgress } from "@react-three/drei";
+import { useEffect } from "react";
 import "./style.css";
 
-export default function Tablet({ occlude }) {
+export default function Tablet({ occlude,websiteUrl,setLoading }) {
   const tablet = useGLTF("./public/assets/model/tablet.gltf");
-  //{...(occlude === 0 && { occlude: "blending" })}
+
+  const { progress } = useProgress();
+
+  useEffect(() => {
+    if (progress === 100) {
+      setLoading(false);
+    }
+  }, [progress]);
+
   return (
     <>
       <primitive
@@ -21,10 +30,13 @@ export default function Tablet({ occlude }) {
         rotation-y={-0.027}
         rotation-z={-0.008}
         distanceFactor={1.15}
-        occlude="blending"
+        {...(occlude === 0 && { occlude: "blending" })}
       >
-        {<iframe src="https://www.sitishop.it" />}
+        {<iframe src={websiteUrl} />}
       </Html>
     </>
   );
+}
+function setLoading(arg0: boolean) {
+  throw new Error("Function not implemented.");
 }

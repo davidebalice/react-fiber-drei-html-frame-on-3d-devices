@@ -1,14 +1,14 @@
-import React from "react";
 import { useProgress } from "@react-three/drei";
-import "./style.css"; 
+import logo from "../public/assets/model/textures/logoWhite.png";
+import "./style.css";
 
 const Preloader = () => {
-  const { progress } = useProgress(); 
+  const { progress } = useProgress();
 
   return (
     <div className="preloader">
+      <img src={logo} className="logoPreloader" />
       <div className="spinner"></div>
-      <p>Loading: {Math.round(progress)}%</p> 
     </div>
   );
 };

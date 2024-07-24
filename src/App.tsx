@@ -1,34 +1,25 @@
+import { useProgress } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./Header";
 import Preloader from "./Preloader";
 import Scene from "./Scene";
 import "./style.css";
-import { useProgress } from "@react-three/drei";
 
 const initialPosition = [-15, 6, 20];
 const finalPosition = [-3, 2.5, 4];
 
 function App() {
-  const { progress } = useProgress();
+  const [loading, setLoading] = useState(true);
   const [device, setDevice] = useState("notebook");
   const [cameraPosition, setCameraPosition] = useState(initialPosition);
   const [cameraPositionIndex, setCameraPositionIndex] = useState(0);
-  const websiteUrl = " https://www.sitishop.it";
+  const websiteUrl = "https://www.davidebalice.dev";
 
-  /*
- useEffect(() => {
-    // Monitorare il completamento del caricamento
-    if (nodes && materials) {
-      setLoading(false);
-    }
-  }, [nodes, materials]);
-
-
-  {loading && <Preloader />}
-
-*/
+  useEffect(() => {
+    setLoading(true);
+  }, [device]);
 
   return (
     <>
@@ -40,7 +31,7 @@ function App() {
         finalPosition={finalPosition}
         setCameraPositionIndex={setCameraPositionIndex}
       />
-      {progress < 100 && <Preloader />}
+      {loading && <Preloader />}
       <Canvas
         shadows
         dpr={[1, 2]}
@@ -59,6 +50,9 @@ function App() {
           setCameraPosition={setCameraPosition}
           cameraPositionIndex={cameraPositionIndex}
           setCameraPositionIndex={setCameraPositionIndex}
+          websiteUrl={websiteUrl}
+          loading={loading}
+          setLoading={setLoading}
         />
       </Canvas>
     </>
