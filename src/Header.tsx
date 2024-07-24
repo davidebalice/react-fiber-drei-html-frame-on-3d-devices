@@ -1,5 +1,11 @@
-import "./style.css";
+
 import logo from "../public/assets/model/textures/logoWhite.png";
+import monitorOld from "../public/assets/model/textures/monitor-old.png";
+import monitor from "../public/assets/model/textures/monitor.png";
+import notebook from "../public/assets/model/textures/notebook.png";
+import smartphone from "../public/assets/model/textures/smartphone.png";
+import tablet from "../public/assets/model/textures/tablet.png";
+import "./style.css";
 
 export default function Header({
   device,
@@ -11,86 +17,84 @@ export default function Header({
 }) {
   return (
     <header className="header">
-      <nav>
-        <img src={logo} className="dbLogo"/>
-        <ul>
-          <li>
-            <a
-              onClick={() => {
-                setDevice("notebook");
-                setCameraPosition(initialPosition);
-                setCameraPositionIndex(0);
-              }}
-            >
-              notebook
-            </a>
-          </li>
-          <li>
-            <a
-              onClick={() => {
-                setDevice("monitor");
-                setCameraPosition(initialPosition);
-                setCameraPositionIndex(0);
-              }}
-            >
-              monitor
-            </a>
-          </li>
-          <li>
-            <a
-              onClick={() => {
-                setDevice("monitorOld");
-                setCameraPosition(initialPosition);
-                setCameraPositionIndex(0);
-              }}
-            >
-              monitor-old
-            </a>
-          </li>
-          <li>
-            <a
-              onClick={() => {
-                setDevice("smartphone");
-                setCameraPosition(initialPosition);
-                setCameraPositionIndex(0);
-              }}
-            >
-              smartphone
-            </a>
-          </li>
-          <li>
-            <a
-              onClick={() => {
-                setDevice("tablet");
-                setCameraPosition(initialPosition);
-                setCameraPositionIndex(0);
-              }}
-            >
-              tablet
-            </a>
-          </li>
-          <li>
-            <a
-              onClick={() => {
-                setCameraPosition(initialPosition);
-                setCameraPositionIndex(0);
-              }}
-            >
-              zoom 1
-            </a>
-          </li>
-          <li>
-            <a
-              onClick={() => {
-                setCameraPosition(finalPosition);
-                setCameraPositionIndex(1);
-              }}
-            >
-              zoom 2
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <div className="deviceContainer no-select">
+        <p>
+          <img src={logo} className="dbLogo" />
+        </p>
+        <div
+          onClick={() => {
+            setDevice("notebook");
+            setCameraPosition(initialPosition);
+            setCameraPositionIndex(0);
+          }}
+        >
+          <img src={notebook} />
+        </div>
+
+        <div
+          onClick={() => {
+            setDevice("monitor");
+            setCameraPosition(initialPosition);
+            setCameraPositionIndex(0);
+          }}
+        >
+          <img src={monitor} />
+        </div>
+
+        <div
+          onClick={() => {
+            setDevice("monitorOld");
+            setCameraPosition(initialPosition);
+            setCameraPositionIndex(0);
+          }}
+        >
+          <img src={monitorOld} />
+        </div>
+
+        <div
+          onClick={() => {
+            setDevice("smartphone");
+            setCameraPosition(initialPosition);
+            setCameraPositionIndex(0);
+          }}
+        >
+          <img src={smartphone} />
+        </div>
+
+        <div
+          onClick={() => {
+            setDevice("tablet");
+            setCameraPosition(initialPosition);
+            setCameraPositionIndex(0);
+          }}
+        >
+          <img src={tablet} />
+        </div>
+      </div>
+
+      <div className="zoomContainer no-select">
+        <b>Zoom</b>
+        <div>
+          <a
+            onClick={() => {
+              setCameraPosition(initialPosition);
+              setCameraPositionIndex(0);
+            }}
+          >
+            zoom 1
+          </a>
+        </div>
+        <div>
+          <a
+            onClick={() => {
+              setCameraPosition(finalPosition);
+              setCameraPositionIndex(1);
+            }}
+          >
+            zoom 2
+          </a>
+        </div>
+      </div>
     </header>
   );
 }
