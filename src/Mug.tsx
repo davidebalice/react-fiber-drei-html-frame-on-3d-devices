@@ -4,9 +4,6 @@ import "./style.css";
 export default function Mug() {
   const mug = useGLTF("./public/assets/model/mug.gltf");
 
- //const decalTexture = useTexture("./public/assets/model/textures/logo.png");
-
-
 
   return (
     <>

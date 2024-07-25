@@ -1,6 +1,10 @@
 import "./style.css";
 
-export default function Modal({ setShowModal }) {
+interface ModalProps {
+  setShowModal: (value: boolean) => void;
+}
+
+export default function Modal({ setShowModal }: ModalProps) {
   return (
     <div className="modal">
       <div className="modalContent">

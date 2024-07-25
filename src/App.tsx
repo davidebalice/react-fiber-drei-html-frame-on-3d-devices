@@ -8,8 +8,8 @@ import Preloader from "./Preloader";
 import Scene from "./Scene";
 import "./style.css";
 
-const initialPosition = [-15, 6, 20];
-const finalPosition = [-3, 2.5, 4];
+const initialPosition: [number, number, number] = [-15, 6, 20];
+const finalPosition: [number, number, number] = [-3, 2.5, 4];
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -26,7 +26,6 @@ function App() {
   return (
     <>
       <Header
-        device={device}
         setDevice={setDevice}
         setCameraPosition={setCameraPosition}
         initialPosition={initialPosition}
@@ -36,7 +35,7 @@ function App() {
       {showModal && <Modal setShowModal={setShowModal} />}
       {loading && <Preloader />}
 
-      {!showModal  && (
+      {!showModal && (
         <Canvas
           shadows
           dpr={[1, 2]}
@@ -67,4 +66,9 @@ function App() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+const rootElement = document.getElementById("root");
+if (rootElement) {
+  ReactDOM.createRoot(rootElement).render(<App />);
+} else {
+  console.error("Root element not found");
+}

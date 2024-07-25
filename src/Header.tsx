@@ -9,14 +9,21 @@ import tablet from "../public/assets/model/textures/tablet.png";
 import tv from "../public/assets/model/textures/tv.png";
 import "./style.css";
 
-export default function Header({
-  device,
+interface HeaderProps {
+  setDevice: (device: string) => void;
+  setCameraPosition: (position: [number, number, number]) => void;
+  initialPosition: [number, number, number];
+  finalPosition: [number, number, number];
+  setCameraPositionIndex: (index: number) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({
   setDevice,
   setCameraPosition,
   initialPosition,
   finalPosition,
   setCameraPositionIndex,
-}) {
+}) => {
   return (
     <>
       <header className="header">
@@ -106,4 +113,5 @@ export default function Header({
       </div>
     </>
   );
-}
+};
+export default Header;

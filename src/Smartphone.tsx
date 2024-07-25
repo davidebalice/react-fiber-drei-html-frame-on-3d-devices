@@ -2,7 +2,17 @@ import { Html, useGLTF, useProgress } from "@react-three/drei";
 import { useEffect } from "react";
 import "./style.css";
 
-export default function Smartphone({ occlude,websiteUrl,setLoading }) {
+interface SmartphoneProps {
+  occlude: number;
+  websiteUrl: string;
+  setLoading: (loading: boolean) => void;
+}
+
+export default function Smartphone({
+  occlude,
+  websiteUrl,
+  setLoading,
+}: SmartphoneProps) {
   const smartphone = useGLTF("./public/assets/model/smartphone.gltf");
 
   const { progress } = useProgress();

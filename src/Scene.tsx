@@ -5,6 +5,7 @@ import {
 } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useEffect } from "react";
+import { Vector3 } from "three";
 import DbLogo from "./DbLogo";
 import Desktop from "./Desktop";
 import Monitor from "./Monitor.js";
@@ -15,11 +16,26 @@ import Smartphone from "./Smartphone.js";
 import Tablet from "./Tablet.js";
 import Tv from "./Tv.js";
 
-const CameraController = ({ targetPosition }) => {
+interface SceneProps {
+  device: string;
+  initialPosition: [number, number, number];
+  finalPosition: [number, number, number];
+  cameraPosition: [number, number, number];
+  setCameraPosition: (position: [number, number, number]) => void;
+  cameraPositionIndex: number;
+  setCameraPositionIndex: (index: number) => void;
+  websiteUrl: string;
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
+}
+
+const CameraController: React.FC<{
+  targetPosition: [number, number, number];
+}> = ({ targetPosition }) => {
   const { camera } = useThree();
   useFrame(() => {
     camera.position.lerp(
-      { x: targetPosition[0], y: targetPosition[1], z: targetPosition[2] },
+      new Vector3(targetPosition[0], targetPosition[1], targetPosition[2]),
       0.05
     );
     camera.updateProjectionMatrix();
@@ -38,21 +54,7 @@ export default function Scene({
   websiteUrl,
   loading,
   setLoading,
-}) {
-  /*
-  useEffect(() => {
-    const handleClick = () => {
-      setCameraPosition(finalPosition);
-    };
-
-    window.addEventListener("click", handleClick);
-
-    return () => {
-      window.removeEventListener("click", handleClick);
-    };
-  }, []);
-*/
-
+}: SceneProps) {
   useEffect(() => {
     const handleWheel = (event: { deltaY: number }) => {
       if (event.deltaY > 0) {
@@ -86,7 +88,7 @@ export default function Scene({
     };
   }, []);
 
-  const renderDevice = (websiteUrl) => {
+  const renderDevice = (websiteUrl: string) => {
     switch (device) {
       case "notebook":
         return (

@@ -2,7 +2,17 @@ import { Html, useGLTF, useProgress } from "@react-three/drei";
 import { useEffect } from "react";
 import "./style.css";
 
-export default function MonitorOld({ occlude, websiteUrl, setLoading }) {
+interface MonitorOldProps {
+  occlude: number;
+  websiteUrl: string;
+  setLoading: (loading: boolean) => void;
+}
+
+export default function MonitorOld({
+  occlude,
+  websiteUrl,
+  setLoading,
+}: MonitorOldProps) {
   const monitor = useGLTF("./public/assets/model/monitor-old.gltf");
   const pc = useGLTF("./public/assets/model/pc-old/pc-old.gltf");
   const keyboard = useGLTF(

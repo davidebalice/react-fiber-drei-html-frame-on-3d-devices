@@ -2,7 +2,17 @@ import { Html, useGLTF, useProgress } from "@react-three/drei";
 import { useEffect } from "react";
 import "./style.css";
 
-export default function Tablet({ occlude, websiteUrl, setLoading }) {
+interface TabletProps {
+  occlude: number;
+  websiteUrl: string;
+  setLoading: (loading: boolean) => void;
+}
+
+export default function Tablet({
+  occlude,
+  websiteUrl,
+  setLoading,
+}: TabletProps) {
   const tablet = useGLTF("./public/assets/model/tablet.gltf");
 
   const { progress } = useProgress();

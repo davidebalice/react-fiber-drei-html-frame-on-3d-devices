@@ -2,7 +2,12 @@ import github from "../public/assets/model/textures/github_white.png";
 import info from "../public/assets/model/textures/info.png";
 import "./style.css";
 
-export default function Footer({ showModal, setShowModal }) {
+interface FooterProps {
+  showModal: boolean;
+  setShowModal: (value: boolean) => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ showModal, setShowModal }) => {
   return (
     <footer className="footer no-select">
       <div className="footerRow">
@@ -26,4 +31,6 @@ export default function Footer({ showModal, setShowModal }) {
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

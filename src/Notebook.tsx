@@ -1,9 +1,19 @@
 import { Html, useGLTF, useProgress } from "@react-three/drei";
 
-import "./style.css";
 import { useEffect } from "react";
+import "./style.css";
 
-export default function Notebook({ occlude,websiteUrl,setLoading }) {
+interface NotebookProps {
+  occlude: number;
+  websiteUrl: string;
+  setLoading: (loading: boolean) => void;
+}
+
+export default function Notebook({
+  occlude,
+  websiteUrl,
+  setLoading,
+}: NotebookProps) {
   const notebook = useGLTF("./public/assets/model/macbook.gltf");
 
   const { progress } = useProgress();
@@ -24,7 +34,7 @@ export default function Notebook({ occlude,websiteUrl,setLoading }) {
       />
       <Html
         wrapperClass="notebook"
-        position={[0, 0.55, -1.40]}
+        position={[0, 0.55, -1.4]}
         transform
         rotation-x={-0.26}
         distanceFactor={1.12}

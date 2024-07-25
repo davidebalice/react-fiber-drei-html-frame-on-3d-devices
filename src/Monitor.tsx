@@ -1,8 +1,18 @@
 import { Html, useGLTF, useProgress } from "@react-three/drei";
-import "./style.css";
 import { useEffect } from "react";
+import "./style.css";
 
-export default function Monitor({ occlude,websiteUrl,setLoading }) {
+interface MonitorProps {
+  occlude: number;
+  websiteUrl: string;
+  setLoading: (loading: boolean) => void;
+}
+
+export default function Monitor({
+  occlude,
+  websiteUrl,
+  setLoading,
+}: MonitorProps) {
   const monitor = useGLTF("./public/assets/model/monitor.gltf");
   const pc = useGLTF("./public/assets/model/pc.gltf");
   const keyboard = useGLTF("./public/assets/model/keyboard/keyboard.gltf");
@@ -24,7 +34,7 @@ export default function Monitor({ occlude,websiteUrl,setLoading }) {
         rotation={[0, 0, 0]}
         castShadow
       ></primitive>
-       <primitive
+      <primitive
         object={keyboard.scene}
         position={[0, -0.45, 1]}
         scale={[0.155, 0.155, 0.155]}

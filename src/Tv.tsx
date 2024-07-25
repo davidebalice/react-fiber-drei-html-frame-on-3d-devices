@@ -2,7 +2,13 @@ import { Html, useGLTF, useProgress } from "@react-three/drei";
 import { useEffect } from "react";
 import "./style.css";
 
-export default function Tv({ occlude, websiteUrl, setLoading }) {
+interface TvProps {
+  occlude: number;
+  websiteUrl: string;
+  setLoading: (loading: boolean) => void;
+}
+
+export default function Tv({ occlude, websiteUrl, setLoading }: TvProps) {
   const tv = useGLTF("./public/assets/model/tv.gltf");
   const sofa = useGLTF("./public/assets/model/sofa/sofa.gltf");
   const tvstand = useGLTF("./public/assets/model/tvstand.gltf");
@@ -36,7 +42,7 @@ export default function Tv({ occlude, websiteUrl, setLoading }) {
       <primitive
         object={tv.scene}
         scale={[7, 7, 7]}
-        position={[-1,0.8,-8]}
+        position={[-1, 0.8, -8]}
         rotation={[0, 0.15, 0]}
         castShadow
         receiceShadow
