@@ -13,6 +13,7 @@ import Mug from "./Mug";
 import Notebook from "./Notebook.js";
 import Smartphone from "./Smartphone.js";
 import Tablet from "./Tablet.js";
+import Tv from "./Tv.js";
 
 const CameraController = ({ targetPosition }) => {
   const { camera } = useThree();
@@ -127,6 +128,14 @@ export default function Scene({
             setLoading={setLoading}
           />
         );
+      case "tv":
+        return (
+          <Tv
+            occlude={cameraPositionIndex}
+            websiteUrl={websiteUrl}
+            setLoading={setLoading}
+          />
+        );
       default:
         return null;
     }
@@ -157,7 +166,7 @@ export default function Scene({
           color="black"
         />
         <CameraController targetPosition={cameraPosition} />
-        {device != "smartphone" && device != "tablet" && (
+        {device != "smartphone" && device != "tablet" && device != "tv" && (
           <>
             <Mug />
             <DbLogo />

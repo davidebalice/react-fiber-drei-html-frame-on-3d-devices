@@ -1,10 +1,13 @@
 import { Html, useGLTF, useProgress } from "@react-three/drei";
-import "./style.css";
 import { useEffect } from "react";
+import "./style.css";
 
-export default function MonitorOld({ occlude,websiteUrl,setLoading}) {
+export default function MonitorOld({ occlude, websiteUrl, setLoading }) {
   const monitor = useGLTF("./public/assets/model/monitor-old.gltf");
-  const pc = useGLTF("./public/assets/model/pc-old.gltf");
+  const pc = useGLTF("./public/assets/model/pc-old/pc-old.gltf");
+  const keyboard = useGLTF(
+    "./public/assets/model/keyboard-old/keyboard-old.gltf"
+  );
 
   const { progress } = useProgress();
 
@@ -17,6 +20,13 @@ export default function MonitorOld({ occlude,websiteUrl,setLoading}) {
   return (
     <>
       <primitive
+        object={keyboard.scene}
+        position={[0.1, -0.55, 1.3]}
+        scale={[6, 6, 6]}
+        rotation={[0, 0, 0]}
+        castShadow
+      ></primitive>
+      <primitive
         object={pc.scene}
         position={[0.5, -4.95, 2]}
         scale={[1.7, 1.7, 1.7]}
@@ -28,7 +38,7 @@ export default function MonitorOld({ occlude,websiteUrl,setLoading}) {
         position-y={1.2}
         position-z={-0.2}
         scale={[0.013, 0.013, 0.013]}
-        rotation={[0, 4.66, 0]}
+        rotation={[0, 4.76, 0]}
         castShadow
       >
         <Html

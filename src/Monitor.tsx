@@ -5,6 +5,7 @@ import { useEffect } from "react";
 export default function Monitor({ occlude,websiteUrl,setLoading }) {
   const monitor = useGLTF("./public/assets/model/monitor.gltf");
   const pc = useGLTF("./public/assets/model/pc.gltf");
+  const keyboard = useGLTF("./public/assets/model/keyboard/keyboard.gltf");
 
   const { progress } = useProgress();
 
@@ -23,12 +24,19 @@ export default function Monitor({ occlude,websiteUrl,setLoading }) {
         rotation={[0, 0, 0]}
         castShadow
       ></primitive>
+       <primitive
+        object={keyboard.scene}
+        position={[0, -0.45, 1]}
+        scale={[0.155, 0.155, 0.155]}
+        rotation={[0, 0, 0]}
+        castShadow
+      ></primitive>
       <primitive
         object={monitor.scene}
         position-y={-0.5}
         position-z={-1}
         scale={[0.013, 0.013, 0.013]}
-        rotation={[0, 4.66, 0]}
+        rotation={[0, 4.76, 0]}
         castShadow
       >
         <Html

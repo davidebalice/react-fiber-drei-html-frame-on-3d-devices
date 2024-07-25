@@ -2,7 +2,7 @@ import { Html, useGLTF, useProgress } from "@react-three/drei";
 import { useEffect } from "react";
 import "./style.css";
 
-export default function Tablet({ occlude,websiteUrl,setLoading }) {
+export default function Tablet({ occlude, websiteUrl, setLoading }) {
   const tablet = useGLTF("./public/assets/model/tablet.gltf");
 
   const { progress } = useProgress();
@@ -17,15 +17,16 @@ export default function Tablet({ occlude,websiteUrl,setLoading }) {
     <>
       <primitive
         object={tablet.scene}
+        scale={[1.3, 1.3, 1.3]}
         position-y={0.8}
         castShadow
         receiceShadow
       />
       <Html
         wrapperClass="tablet"
-        position={[-0.01, 0.81, 0.068]}
+        position={[-0.01, 0.81, 0.087]}
         transform
-        scale={[0.52, 0.52, 0.52]}
+        scale={[0.67, 0.68, 0.67]}
         rotation-x={0.03}
         rotation-y={-0.027}
         rotation-z={-0.008}
