@@ -1,4 +1,5 @@
 import "./style.css";
+import logoReact from "../public/assets/model/textures/logoReact.png";
 
 interface ModalProps {
   setShowModal: (value: boolean) => void;
@@ -9,10 +10,12 @@ export default function Modal({ setShowModal }: ModalProps) {
     <div className="modal">
       <div className="modalContent">
         <div onClick={() => setShowModal(false)} className="modalClose">
-          close
+          X
         </div>
 
         <div>
+          <img src={logoReact} className="logoReact"/>
+          <br />
           <b>3D website visualization on different devices.</b>
           <br />
           <br />
