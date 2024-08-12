@@ -15,6 +15,8 @@ export default function MonitorOld({
 }: MonitorOldProps) {
   const monitor = useGLTF("./public/assets/model/monitor-old.gltf");
   const pc = useGLTF("./public/assets/model/pc-old/pc-old.gltf");
+  const table = useGLTF("./public/assets/model/table.gltf");
+  const chair = useGLTF("./public/assets/model/chair.gltf");
   const keyboard = useGLTF(
     "./public/assets/model/keyboard-old/keyboard-old.gltf"
   );
@@ -38,11 +40,28 @@ export default function MonitorOld({
       ></primitive>
       <primitive
         object={pc.scene}
-        position={[0.5, -4.95, 2]}
+        position={[0.5, -0.22, 2]}
         scale={[1.7, 1.7, 1.7]}
         rotation={[0, -1.59, 0]}
         castShadow
       ></primitive>
+
+    <primitive
+        object={table.scene}
+        position={[0.5, -2.7, 0.2]}
+        scale={[5, 5, 5]}
+        rotation={[0, -1.59, 0]}
+        castShadow
+      ></primitive>
+
+    <primitive
+        object={chair.scene}
+        position={[0.5, -2.25, 2]}
+        scale={[3.1, 3.1, 3.1]}
+        rotation={[0, 0, 0]}
+        castShadow
+      ></primitive>
+
       <primitive
         object={monitor.scene}
         position-y={1.2}

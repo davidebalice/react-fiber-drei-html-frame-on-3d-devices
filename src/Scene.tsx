@@ -168,7 +168,7 @@ export default function Scene({
           color="black"
         />
         <CameraController targetPosition={cameraPosition} />
-        {device != "smartphone" && device != "tablet" && device != "tv" && (
+        {(device === "monitor" || device === "notebook") && (
           <>
             <Mug />
             <DbLogo />

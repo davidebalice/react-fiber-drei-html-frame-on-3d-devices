@@ -39,6 +39,7 @@ function App() {
         <Canvas
           shadows
           dpr={[1, 2]}
+          style={{ position: "absolute", top: 0, left: 0, zIndex: 0 }}
           camera={{
             fov: 45,
             near: 0.1,
